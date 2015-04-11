@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from random import random
+from math import e
 import argparse
 
 
@@ -17,11 +18,14 @@ def main():
     for i in range(args.n):
         result = random()
         count = 1
-        while(True):
-            var1 = random()
-            result += var1
-            count += 1
-            if result > 1:
+        while True:
+            if result >= e ** -3:
+                var = random()
+                result *= var
+                count += 1
+            else:
+                if count > 1:
+                    count -= 1
                 break
         prom += count
     prom /= args.n
