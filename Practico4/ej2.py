@@ -14,7 +14,7 @@ def parser():
 
 
 def funExp(k):
-    return e ** (k / N)
+    return e ** (k / float(N))
 
 
 def ejA():
@@ -31,8 +31,9 @@ def ejB():
         var_random = random()
         var = N * var_random + 1
         total += funExp(var)
-    print "La aproximacion sorteando %s " \
-        "numeros aleat. es: %s" % (str(args.n), str(total))
+    result = (total * N) / args.n
+    print "Sorteando %s " \
+        "num. aleat. es: %s" % (str(args.n), str(result))
 
 
 if __name__ == "__main__":
