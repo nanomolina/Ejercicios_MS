@@ -8,11 +8,12 @@ def sumatory(lambd, k):
     for j in range(k):
         result += p
         p = (p * lambd) / (j + 1)
+    return result
 
 
 # Funcion uniforme en [0,..,10]
 def g(x):
-    return 1/(x + 1)
+    return 1.0/(x + 1)
 
 
 def f(x, lambd, k):
@@ -33,12 +34,16 @@ def maxP(lambd, k):
 
 
 def genPoissonVar(lambd, k):
-    while not var_random2 <= p_Y/(max_val * q_Y)
+    while True:
         var_random1 = random()
         Y = int((k + 1) * var_random1) + 1
         var_random2 = random()
         max_val = maxP(lambd, k)
         p_Y = f(Y, lambd, k)
         q_Y = g(Y)
-    return Y
+        if var_random2 <= p_Y/(max_val * q_Y):
+            result = Y
+            break
+    return result
+
 
