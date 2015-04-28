@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from random import random
+from math import sqrt
 import argparse
 
 NUMBER_OF_CARDS = 100
@@ -42,11 +43,24 @@ def successPackOfCards():
 def expectation():
     args = parser()
     total = 0.0
-    for _ in range(int(args.n)):
+    for _ in range(args.n):
         total += successPackOfCards()
     average = total / int(args.n)
-    print "La esperanza en %s iteraciones es: %s" % (str(args.n), str(average))
+    return average
+
+def Variance():
+    args = parser()
+    total = 0.0
+    average = expectation()
+    for _ in range(args.n):
+        total = (successPackOfCards() - average)**2
+    variance = total / (args.n - 1)
+    return variance
 
 
 if __name__ == "__main__":
-    expectation()
+    average = expectation()
+    print "La esperanza en %s iteraciones es: %s" % (100, str(average))
+    variance = Variance()
+    print "La varianza en %s iteraciones es: %s" % (100, str(variance))
+    print "La desv std en %s iteraciones es: %s" % (100, str(sqrt(variance)))
