@@ -16,13 +16,13 @@ def GeneratePoissonVar(lambd):
 
 
 def recursivePoisson(lambd, i):
-    #assert(i >= 1)
-    #if i == 1:
-        #result = lambd
-    #else:
-        #result = (lambd / i) * recursivePoisson(lambd, i - 1)
-    #return result
-    return e**-lambd * (lambd**i) / factorial(i)
+    assert(i >= 0)
+    if i == 0:
+        result = e**-lambd
+    else:
+        result = (lambd / i) * recursivePoisson(lambd, i - 1)
+    return result
+    #return e**-lambd * (lambd**i) / factorial(i)
 
 
 def GeneratePoissonVarBetter(lambd):
